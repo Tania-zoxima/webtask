@@ -1,4 +1,4 @@
-import { Menu, Button } from 'antd';
+import { Menu, Button,Table } from 'antd';
 import {
   AppstoreOutlined,
   MenuUnfoldOutlined,
@@ -8,10 +8,13 @@ import {
   ContainerOutlined,
   MailOutlined,
 } from '@ant-design/icons';
+import React from "react";
+import 'antd/dist/antd.css';
+import NestedTable from "./Table";
 
 const { SubMenu } = Menu;
 
-class App extends React.Component {
+class Home extends React.Component {
   state = {
     collapsed: false,
   };
@@ -24,7 +27,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div style={{ width: 256 }}>
+        <div className="outer-div">
+        <div className="left-div">
         <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
           {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
         </Button>
@@ -38,12 +42,12 @@ class App extends React.Component {
           <Menu.Item key="1" icon={<PieChartOutlined />}>
             Option 1
           </Menu.Item>
-          <Menu.Item key="2" icon={<DesktopOutlined />}>
+          {/* <Menu.Item key="2" icon={<DesktopOutlined />}>
             Option 2
           </Menu.Item>
           <Menu.Item key="3" icon={<ContainerOutlined />}>
             Option 3
-          </Menu.Item>
+          </Menu.Item> */}
           <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
             <Menu.Item key="5">Option 5</Menu.Item>
             <Menu.Item key="6">Option 6</Menu.Item>
@@ -59,6 +63,10 @@ class App extends React.Component {
             </SubMenu>
           </SubMenu>
         </Menu>
+        <div className="table-div">
+          <NestedTable />
+        </div>
+        </div>
       </div>
     );
   }
